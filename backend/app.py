@@ -11,7 +11,7 @@ db = SQLAlchemy(app)
 class Song(db.Model):
   __tablename__ = 'songs'
   id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(80), nullable=False)
+  name = db.Column(db.String(80), unique=False, nullable=False)
   artist = db.Column(db.String(120), unique=False, nullable=False)
   genre = db.Column(db.String(120), unique=False, nullable=True)
 
@@ -29,14 +29,15 @@ def test():
 def create_song():
   try:
     data = request.get_json()
-    new_song = Song(name=data['name'], artist=data['artist'])
+    new_song = Song(name=data['name'], artist=data['artist'], genre=data.get('genre'))
     db.session.add(new_song)
     db.session.commit()
 
     return jsonify({
         'id': new_song.id,
         'name': new_song.name,
-        'artist': new_song.artist
+        'artist': new_song.artist,
+        'genre': new_song.genre
     }), 201
   except Exception as e:
       return make_response(jsonify({'message': 'error creating song', 'error': str(e)}), 500)
@@ -45,7 +46,7 @@ def create_song():
 def get_songs():
   try:
     songs = Song.query.all()
-    songs_data = [{'id': song.id, 'name': song.name, 'artist': song.email} for song in songs]
+    songs_data = [{'id': song.id, 'name': song.name, 'artist': song.email, 'genre': song.genre} for song in songs]
     return jsonify(songs_data), 200
   except Exception as e:
     return make_response(jsonify({'message': 'error getting songs', 'error': str(e)}), 500)
