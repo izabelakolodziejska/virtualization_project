@@ -46,7 +46,7 @@ def create_song():
 def get_songs():
   try:
     songs = Song.query.all()
-    songs_data = [{'id': song.id, 'name': song.name, 'artist': song.email, 'genre': song.genre} for song in songs]
+    songs_data = [{'id': song.id, 'name': song.name, 'artist': song.artist, 'genre': song.genre} for song in songs]
     return jsonify(songs_data), 200
   except Exception as e:
     return make_response(jsonify({'message': 'error getting songs', 'error': str(e)}), 500)
