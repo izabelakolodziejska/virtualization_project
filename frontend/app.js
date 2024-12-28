@@ -12,21 +12,31 @@ async function fetchSongs() {
 
 
 function displaySongs(songs) {
-  const songList = document.getElementById('song-list');
-  songList.innerHTML = '';  
-
-  songs.forEach(song => {
-    const songElement = document.createElement('div');
-    songElement.classList.add('song');
+    const songList = document.getElementById('song-list');
     
-    songElement.innerHTML = `
-      <p>${song.name} - ${song.artist} (${song.genre || 'No genre'})</p>
-      <button onclick="deleteSong(${song.id})">Delete</button>
-    `;
-    
-    songList.appendChild(songElement);
-  });
-}
+    songList.innerHTML = '';  
+  
+    if (songs.length === 0) {
+      const placeholder = document.createElement('p');
+      placeholder.classList.add('text-muted', 'text-center');
+      placeholder.textContent = 'No songs added yet. Add your favorite songs on the left!';
+      songList.appendChild(placeholder);
+      return; 
+    }
+  
+    songs.forEach(song => {
+      const songElement = document.createElement('div');
+      songElement.classList.add('song');
+      
+      songElement.innerHTML = `
+        <p>${song.name} - ${song.artist} (${song.genre || 'No genre'})</p>
+        <button class="btn btn-purple"  onclick="deleteSong(${song.id})">Delete</button>
+      `;
+      
+      songList.appendChild(songElement);
+    });
+  }
+  
 
 async function deleteSong(id) {
   try {
