@@ -1,48 +1,77 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fefefe; 
+    background-image: radial-gradient(circle, rgba(229, 217, 255, 0.5) 20%, transparent 20%),
+      radial-gradient(circle, rgba(229, 217, 255, 0.5) 20%, transparent 20%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    color: #444; 
   }
   
   h1 {
-    color: #333;
-  }
-  
-  #song-list {
-    margin-top: 20px;
-  }
-  
-  .song {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: darkred;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #613dc1; 
   }
   
   form {
-    margin-top: 20px;
+    background-color: #f3e7ff; 
+    border: 1px solid #b8c4e9;
+    border-radius: 8px;
   }
   
   input {
-    margin-right: 10px;
-    padding: 5px;
-    font-size: 14px;
+    background-color: #fffafc; 
+    color: #4e148c; 
+    border: 1px solid #b8c4e9;
+    border-radius: 5px;
   }
   
-  button[type="submit"] {
-    background-color: green;
+  input::placeholder {
+    color: #a9a9a9; 
+  }
+  
+  input:focus {
+    outline: 2px solid #613dc1; 
+  }
+  
+  .btn-purple {
+    background-color: #b8c4e9; 
+    border: none;
     color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .btn-purple:hover {
+    background-color: #858ae3; 
+    color: white;
+  }
+  
+  #song-list {
+    background-color: #e7eaff; 
+    border: 1px solid #b8c4e9; 
+    color: #4e148c; 
+    max-height: 400px;
+    overflow-y: auto; 
+  }
+  
+  .song {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #c6d8ff;
+    color: #2c0735;
+  }
+  
+  .song:hover {
+    background-color: #b8c4e9;
+    color: #2c0735;
+  }
+  
+  .text-muted {
+    font-size: 1rem;
+    color: #6c757d; 
   }
   
